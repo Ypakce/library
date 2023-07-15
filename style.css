@@ -1,0 +1,40 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    height: 100vh;
+    background-color: #f0eef1;
+}
+
+.header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: #fffbfb;
+}
+
+.main {
+    text-align: center;
+    margin: 2rem 1rem;
+}
+
+.button-container {
+    margin-bottom: 2rem;
+}
+
+#add-book-button {
+    cursor: pointer;
+    border: none;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+}
+
+#add-book-button:hover {
+    background-color: rgb(150, 150, 150, 0.2);
+    border-radius: 8px;
+}
