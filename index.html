@@ -17,5 +17,21 @@
         </div>
         <div class="book-container"></div>
     </div>
+    <div class="pop-up">
+        <form id="form" action="/" method="get">
+            <div class="form-header">
+                <h1>New book</h1>
+                <span class="return">X</span>
+            </div>
+            <input id="title" name="title" type="text" required placeholder="Title" maxlength="100">
+            <input id="author" name="author" type="text" required placeholder="Author" maxlength="100">
+            <input id="pages" name="pages" type="number" required placeholder="Pages" max="100000" min="0">
+            <div class="read-input">
+                <label for="read">Read: </label>
+                <input type="checkbox" value="read" name="read" id="read">
+            </div>
+            <button id="submit-button" type="submit" form="form">Submit</button>
+        </form>
+    </div>
 </body>
 </html>

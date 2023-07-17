@@ -1,17 +1,38 @@
 const bookContainer = document.querySelector(".book-container");
+const popUp = document.querySelector(".pop-up");
+const returnButton = document.querySelector(".return");
+const addBookButton = document.querySelector("#add-book-button");
+const form = document.getElementById("form");
 
-let myLibrary = [];
+let myLibrary = [
+    {
+        title: "The Hobbit",
+        author: "J.R.R. Tolkien",
+        pages: 295,
+        read: true,
+    },
+    {
+        title: "A Game Of Thrones",
+        author: "George R. R. Martin",
+        pages: 694,
+        read: false,
+    },
+];
 
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.id = myLibrary.length;
 }
 
-function addBookToLibrary(title, author, pages, read) {
-    const book = new Book(title, author, pages, read);
+function addBookToLibrary() {
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const checkbox = document.getElementById("read").checked;
+
+    const book = new Book(title, author, pages, checkbox);
     myLibrary.push(book);
 }
 
@@ -20,14 +41,8 @@ function display() {
         bookContainer.removeChild(bookContainer.firstChild);
     }
 
-    if(myLibrary.length > 0){
-        for(let book of myLibrary){
-            createBook(book);
-        }
-    }
-
-    else{
-        return 0;
+    for(let book of myLibrary){
+        createBook(book);
     }
 }
 
@@ -64,7 +79,7 @@ function createBook(book){
     bookContainer.appendChild(bookCard);
 
     remove.addEventListener("click", () => {
-        myLibrary.splice(book.id, 1);
+        myLibrary.splice(myLibrary.indexOf(book), 1);
         display();
     });
 
@@ -74,6 +89,21 @@ function createBook(book){
     })
 }
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
+returnButton.addEventListener("click", () => {
+    popUp.style.display = "none";
+});
+
+addBookButton.addEventListener("click", () => {
+    popUp.style.display = "block";
+});
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    popUp.style.display = "none";
+
+    addBookToLibrary();
+    display();
+    form.reset();
+});
+
 display();
